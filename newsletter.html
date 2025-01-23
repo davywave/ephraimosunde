@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Page</title>
+    <script defer src="script.js"></script>
+   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f2f1ed;
+        }
+        header {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  position: fixed;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Menu Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f39c12;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  background: #333;
+  height: 3px;
+  width: 25px;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links li a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-links li a {
+    font-size: 0.9rem;
+  }
+}
+/* Ensure all elements size properly */
+* {
+    box-sizing: border-box;
+}
+        /* Rest of your existing styles */
+        body {
+            min-height: 100vh;
+            background-color: #f2f1ed;
+        }
+
+        .newsletter-section {
+            padding: 60px 20px;
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* [Previous styles remain the same...] */
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+        /* Newsletter Section Styles */
+        .newsletter-section {
+            padding: 60px 20px;
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .newsletter-card {
+            position: relative;
+            max-width: 600px;
+            width: 90%;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            margin: 20px;
+        }
+
+        .newsletter-card h1 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-family: Georgia, serif;
+        }
+
+        .newsletter-card p {
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .newsletter-card .tagline {
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .email-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            font-size: 1rem;
+            background: transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-bottom-color: #1a1a1a;
+        }
+
+        .submit-button {
+            background: transparent;
+            color: #000;
+            border: 1px solid #000;
+            padding: 8px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Footer Styles */
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-heading {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #000;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .connect-form {
+            width: 100%;
+        }
+
+        .connect-form input[type="email"] {
+            width: 100%;
+            padding: 8px 0;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .terms-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #000;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-bottom a {
+            color: #000;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-card {
+                padding: 30px 20px;
+            }
+
+            .newsletter-card h1 {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-bottom a {
+                margin: 0 10px;
+            }
+        }
+        .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }}
+    </style>
+</head>
+<body>
+    
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><div class="logo">EPHRAIM OSUNDE</div></a> 
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="author.html">About</a></li>
+            <li><a href="communnity.html">Books</a></li>
+            <li><a href="communnity.html">Explore</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+          </ul>
+          
+        </nav>
+      </header>
+
+  
+
+
+    <!-- Newsletter Section -->
+    <div class="newsletter-section">
+        <div class="newsletter-card">
+            <h1>Our Newsletter</h1>
+            <p>Stay connected. A letter will show up in your inbox, with links to latest conversations and insights.</p>
+            <p class="tagline">Stay awkward, brave, and kind.</p>
+            
+            <form class="email-form">
+                <input type="email" class="email-input" placeholder="Email" required>
+                <button type="submit" class="submit-button">Submit</button>
+                <p class="terms-text">
+                    By submitting, I am agreeing to the Terms of Use and Privacy Policy.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2 class="footer-heading">Contact</h2>
+                <div class="footer-links">
+                    <a href="author.html">About</a>
+                    <a href="communnity.html">Media & Press Kit</a>
+
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h2 class="footer-heading">Login</h2>
+                <div class="footer-links">
+                    <a href="newsletter.html">Newsletter</a>
+                    
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h2 class="footer-heading">Connect</h2>
+                <form class="connect-form">
+                    <input type="email" placeholder="Email" required>
+                    <button type="submit" class="submit-button">Submit</button>
+                    <p class="terms-text">By submitting, I am agreeing to the Terms of Use and Privacy Policy.</p>
+                </form>
+                <div class="footer-social">
+                    <a href="https://facebook.com/yourpage" class="social-icon facebook" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/yourhandle" class="social-icon twitter" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/yourprofile" class="social-icon instagram" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" class="social-icon linkedin" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>©2025, WONTED Owner, LLC</div>
+            <div>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">User Content Guidelines</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
